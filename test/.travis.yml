@@ -1,0 +1,15 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ashok/myapp -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true -e MONGO_CLUSTER=$MONGO_CLUSTER
+    -e MONGO_USER=$MONGO_USER -e MONGO_PASSWORD=$MONGO_PASSWORD
+    -e MONGO_DEFAULT_DATABASE=$MONGO_DEFAULT_DATABASE
+    -e MONGO_TEST_DATABASE=$MONGO_TEST_DATABASE
+    -e PORT=$PORT ashok/myapp npm run test
