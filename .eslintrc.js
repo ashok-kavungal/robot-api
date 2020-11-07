@@ -13,6 +13,8 @@ module.exports = {
   rules: {
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'linebreak-style': 0,
+    'no-console': 1,
+    'func-names': 'always',
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
