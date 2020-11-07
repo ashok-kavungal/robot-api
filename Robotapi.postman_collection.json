@@ -30,6 +30,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "http://192.168.99.100:3000/robot/move",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"command\": \"forward\",\r\n    \"stepsize\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.100:3000/robot/move",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"100"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"move"
+							]
+						},
+						"description": "robot/move - used to move the robot to next location."
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -55,6 +88,35 @@
 							]
 						},
 						"description": "Gets current location of the robot from api."
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/robot/move",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"command\": \"somevalue\",\r\n    \"stepsize\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/robot/move",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"move"
+							]
+						}
 					},
 					"response": []
 				}
