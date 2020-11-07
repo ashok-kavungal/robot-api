@@ -1,8 +1,5 @@
 const express = require('express');
-const {
-  body,
-  param
-} = require('express-validator');
+const { body, param } = require('express-validator');
 
 const robotController = require('../controllers/robot');
 
@@ -27,7 +24,6 @@ const turnCommandValidator = [
   }),
 ];
 
-
 // robot/location  - returns current location cordinates(x,y)
 router.get('/location', robotController.getCurrentlocation);
 
@@ -38,7 +34,11 @@ router.post('/move', moveCommandValidator, robotController.postNextlocation);
 router.post(
   '/turn/:command',
   turnCommandValidator,
-   robotController.postRotateangle
+  // eslint-disable-next-line comma-dangle
+  robotController.postRotateangle
 );
+
+// getlogs from database
+router.get('/logs', robotController.getAllLogs);
 
 module.exports = router;

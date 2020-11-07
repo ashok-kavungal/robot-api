@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 
 const Logs = require('../models/logs');
 const Location = require('../models/location');
-const Robot = require('../utils/robot')
+const Robot = require('../utils/robot');
 
 // fetches and returns the last location from db
 exports.getCurrentlocation = async (req, res, next) => {
@@ -11,6 +11,21 @@ exports.getCurrentlocation = async (req, res, next) => {
     res.status(200).json({
       message: 'current location fetched successfully.',
       result: prevLocation,
+    });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+exports.getAllLogs = async (req, res, next) => {
+  try {
+    const log = await Logs.find().select('command stepsize angle time -_id');
+    res.status(200).json({
+      message: 'fetched all logs successfully.',
+      result: log,
     });
   } catch (err) {
     if (!err.statusCode) {

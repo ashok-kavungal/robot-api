@@ -93,6 +93,50 @@
 						"description": "robot/move - used to move the robot to next location."
 					},
 					"response": []
+				},
+				{
+					"name": "http://192.168.99.100:3000/robot/logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.100:3000/robot/logs",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"100"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/robot/logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/robot/logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"logs"
+							]
+						},
+						"description": "get all logs of commands to api from database"
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}

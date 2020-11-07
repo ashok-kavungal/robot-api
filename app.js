@@ -45,8 +45,10 @@ mongoose
     }
     const port = config.PORT || 3000;
     app.listen(port);
+    // eslint-disable-next-line no-console
     console.log(`API is ready on port :${port}`);
   })
   .catch((err) => {
+    // eslint-disable-next-line no-console
     console.log(err);
   });
