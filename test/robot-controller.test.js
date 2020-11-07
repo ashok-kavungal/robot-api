@@ -44,6 +44,29 @@ describe('Robot Controller', () => {
     expect(saved.location).toHaveProperty('time');
   });
 
+  it('postRotateangle controller should save log and location to db', async () => {
+    const req = {
+      params: {
+        command: 'right',
+      },
+    };
+    const res = {
+      status() {
+        return this;
+      },
+      json() {},
+    };
+
+    const saved = await RobotController.postRotateangle(req, res, () => {});
+    expect(saved.log).toHaveProperty('command', 'right');
+    expect(saved.log).toHaveProperty('time');
+
+    expect(saved.location).toHaveProperty('x');
+    expect(saved.location).toHaveProperty('y');
+    expect(saved.location).toHaveProperty('time');
+    expect(saved.location).toHaveProperty('angle');
+  });
+
   afterAll(async () => {
     await Logs.deleteMany({});
     await Location.deleteMany({});

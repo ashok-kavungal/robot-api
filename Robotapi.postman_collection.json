@@ -38,7 +38,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"command\": \"forward\",\r\n    \"stepsize\": 10\r\n}",
+							"raw": "{\r\n    \"command\":\"left\",\r\n    \"stepsize\" : 20\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,6 +58,36 @@
 							"path": [
 								"robot",
 								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://192.168.99.100:3000/robot/move",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.100:3000/robot/turn/:command",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"100"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"turn",
+								":command"
+							],
+							"variable": [
+								{
+									"key": "command",
+									"value": "left"
+								}
 							]
 						},
 						"description": "robot/move - used to move the robot to next location."
@@ -117,6 +147,34 @@
 								"move"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/robot/turn/:command",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/robot/turn/:command",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"turn",
+								":command"
+							],
+							"variable": [
+								{
+									"key": "command",
+									"value": "backward"
+								}
+							]
+						},
+						"description": "Turns the robot to commands- right,left or backwards"
 					},
 					"response": []
 				}

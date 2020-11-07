@@ -60,3 +60,42 @@ exports.postNextlocation = async (req, res, next) => {
   }
   return saved;
 };
+
+// adds the command  and angle to db
+exports.postRotateangle = async (req, res, next) => {
+  const saved = {};
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const error = new Error(
+        'Invalid command.use commands left, right,or backward to rotate the robot',
+      );
+      error.statusCode = 422;
+      throw error;
+    }
+
+    const { command } = req.params;
+    const log = new Logs({
+      command,
+    });
+    saved.log = await log.save();
+
+    const prevLocation = await Location.currentLocation();
+    const newLocation = Robot.turn(prevLocation, command);
+    const location = new Location(newLocation);
+    saved.location = await location.save();
+
+    res.status(201).json({
+      message: `robot turned ${command} successfully!`,
+      prevLocation,
+      currentLocation: newLocation,
+    });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+
+  return saved;
+};
