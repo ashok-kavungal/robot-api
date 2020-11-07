@@ -9,7 +9,7 @@ services:
             context: .
             dockerfile: Dockerfile.dev
         ports: 
-            - '${LISTENING_PORT}:${LISTENING_PORT}'
+            - '${PORT}:${PORT}'
         volumes:
             - /app/node_modules
             - .:/app
