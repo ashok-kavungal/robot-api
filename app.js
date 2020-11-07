@@ -9,10 +9,10 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-    res.status(404).json({
-      message: 'endpoint not valid',
-    });
+  res.status(404).json({
+    message: 'endpoint not valid',
   });
+});
 app.use((error, req, res, next) => {
   const status = error.statusCode || 500;
   const { message } = error;
@@ -24,16 +24,15 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-.set('useUnifiedTopology', true)
-.connect(
-  MONGODB_URI,
-  { useNewUrlParser: true },
-).then(() => {
-     const port = config.PORT || 3000;
+  .set('useUnifiedTopology', true)
+  .connect(
+    MONGODB_URI,
+    { useNewUrlParser: true },
+  ).then(() => {
+    const port = config.PORT || 3000;
     app.listen(port);
     console.log(`API is ready on port :${port}`);
   })
   .catch((err) => {
     console.log(err);
   });
-
