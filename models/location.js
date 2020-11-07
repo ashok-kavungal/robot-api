@@ -19,7 +19,6 @@ const locationSchema = new Schema({
   time: { type: Date, default: Date.now },
 });
 
-// eslint-disable-next-line func-names
 locationSchema.statics.currentLocation = function () {
   return this.findOne()
     .sort({
