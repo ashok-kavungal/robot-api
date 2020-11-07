@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "a210b617-f210-4b3d-99eb-c7bc29c84ab3",
+		"name": "Robotapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "docker",
+			"item": [
+				{
+					"name": "http://192.168.99.100:3000/robot/location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.100:3000/robot/location",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"100"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"location"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Localhost",
+			"item": [
+				{
+					"name": "http://localhost:3000/robot/location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/robot/location",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"location"
+							]
+						},
+						"description": "Gets current location of the robot from api."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
