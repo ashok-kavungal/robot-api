@@ -7,7 +7,7 @@ services:
             - CHOKIDAR_USEPOLLING=true
         build: 
             context: .
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         ports: 
             - '${PORT}:${PORT}'
         volumes:
@@ -20,7 +20,7 @@ services:
             - CHOKIDAR_USEPOLLING=true
         build: 
             context: .
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         volumes:
             - /app/node_modules
             - .:/app  
