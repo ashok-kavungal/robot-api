@@ -24,10 +24,11 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    MONGODB_URI
-  )
-  .then(() => {
+.set('useUnifiedTopology', true)
+.connect(
+  MONGODB_URI,
+  { useNewUrlParser: true },
+).then(() => {
      const port = config.PORT || 3000;
     app.listen(port);
     console.log(`API is ready on port :${port}`);
