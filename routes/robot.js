@@ -17,7 +17,7 @@ const moveCommandValidator = [
 
 const turnCommandValidator = [
   param('command').custom((value) => {
-    if (!['left', 'right', 'backward'].includes(value)) {
+    if (!['left', 'right', 'back'].includes(value)) {
       throw new Error('invalid command');
     }
     return true;

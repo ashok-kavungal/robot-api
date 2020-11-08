@@ -86,7 +86,7 @@ exports.postRotateangle = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const error = new Error(
-        'Invalid command.use commands left, right,or backward to rotate the robot'
+        'Invalid command.use commands left, right,or back to rotate the robot'
       );
       error.statusCode = 422;
       throw error;

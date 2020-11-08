@@ -154,7 +154,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"command\": \"somevalue\",\r\n    \"stepsize\": 10\r\n}",
+							"raw": "{\r\n    \"command\": \"backward\",\r\n    \"stepsize\": 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -197,7 +197,7 @@
 							"variable": [
 								{
 									"key": "command",
-									"value": "backward"
+									"value": "right"
 								}
 							]
 						},
