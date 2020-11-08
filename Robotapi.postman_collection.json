@@ -27,7 +27,8 @@
 								"robot",
 								"location"
 							]
-						}
+						},
+						"description": "Sends a GET request to collect the current location of robot ."
 					},
 					"response": []
 				},
@@ -59,12 +60,13 @@
 								"robot",
 								"move"
 							]
-						}
+						},
+						"description": "Sends an post request with request body containing the command and stepsize to move the robot to a new location. The accepted commands are 'left', 'right', 'backward', and 'forward' , stepsize has to be a numeric value. The requests returns the updated location of robot on success, or error in case of any technical error."
 					},
 					"response": []
 				},
 				{
-					"name": "http://192.168.99.100:3000/robot/move",
+					"name": "http://192.168.99.100:3000/robot/:command",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -90,7 +92,7 @@
 								}
 							]
 						},
-						"description": "robot/move - used to move the robot to next location."
+						"description": "Sends a POST request to api to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot , if the request was successful."
 					},
 					"response": []
 				},
@@ -113,28 +115,8 @@
 								"robot",
 								"logs"
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:3000/robot/logs",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/robot/logs",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"robot",
-								"logs"
-							]
 						},
-						"description": "get all logs of commands to api from database"
+						"description": "Sends a Get request to fetch logs of all commands made to api. The result will contain the log data, and location data of robot before and after the command was send to api. Returns an empty array of logs, if no log is found."
 					},
 					"response": []
 				}
@@ -161,7 +143,7 @@
 								"location"
 							]
 						},
-						"description": "Gets current location of the robot from api."
+						"description": "Sends a GET request to collect the current location of robot ."
 					},
 					"response": []
 				},
@@ -190,7 +172,8 @@
 								"robot",
 								"move"
 							]
-						}
+						},
+						"description": "Sends an post request with request body containing the command and stepsize to move the robot to a new location. The accepted commands are 'left', 'right', 'backward', and 'forward' , stepsize has to be a numeric value. The requests returns the updated location of robot on success, or error in case of any technical error."
 					},
 					"response": []
 				},
@@ -218,7 +201,28 @@
 								}
 							]
 						},
-						"description": "Turns the robot to commands- right,left or backwards"
+						"description": "Sends a POST request to api to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot , if the request was successful.\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/robot/logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/robot/logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"robot",
+								"logs"
+							]
+						},
+						"description": "Sends a Get request to fetch logs of all commands made to api. The result will contain the log data, and location data of robot before and after the command was send to api. Returns an empty array of logs, if no log is found."
 					},
 					"response": []
 				}

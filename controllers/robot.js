@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { validationResult } = require('express-validator');
 
 const Logs = require('../models/logs');
@@ -7,7 +8,7 @@ const Robot = require('../utils/robot');
 // fetches and returns the last location from db
 exports.getCurrentlocation = async (req, res, next) => {
   try {
-    const prevLocation = await Location.currentLocation();
+    const prevLocation = await Location.currentLocation('-_id');
     res.status(200).json({
       message: 'current location fetched successfully.',
       result: prevLocation,
@@ -22,7 +23,7 @@ exports.getCurrentlocation = async (req, res, next) => {
 
 exports.getAllLogs = async (req, res, next) => {
   try {
-    const log = await Logs.find().select('command stepsize angle time -_id');
+    const log = await Logs.getLogs();
     res.status(200).json({
       message: 'fetched all logs successfully.',
       result: log,
@@ -42,7 +43,7 @@ exports.postNextlocation = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const error = new Error(
-        'stepsize should be numeric and use commands left, right, backward or forward to move the robot',
+        'stepsize should be numeric and use commands left, right, backward or forward to move the robot'
       );
       error.statusCode = 422;
       throw error;
@@ -50,21 +51,23 @@ exports.postNextlocation = async (req, res, next) => {
 
     const { command } = req.body;
     const { stepsize } = req.body;
-    const log = new Logs({
-      command,
-      stepsize,
-    });
-
-    saved.log = await log.save();
 
     const prevLocation = await Location.currentLocation();
     const newLocation = Robot.move(prevLocation, command, stepsize);
     const location = new Location(newLocation);
     saved.location = await location.save();
 
+    const log = new Logs({
+      command,
+      stepsize,
+      prevLocation: prevLocation._id,
+      currLocation: saved.location._id,
+    });
+
+    saved.log = await log.save();
+
     res.status(201).json({
       message: `robot moved ${stepsize} units ${command} successfully!`,
-      prevLocation,
       currentLocation: newLocation,
     });
   } catch (err) {
@@ -83,26 +86,29 @@ exports.postRotateangle = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const error = new Error(
-        'Invalid command.use commands left, right,or backward to rotate the robot',
+        'Invalid command.use commands left, right,or backward to rotate the robot'
       );
       error.statusCode = 422;
       throw error;
     }
 
     const { command } = req.params;
-    const log = new Logs({
-      command,
-    });
-    saved.log = await log.save();
 
     const prevLocation = await Location.currentLocation();
     const newLocation = Robot.turn(prevLocation, command);
     const location = new Location(newLocation);
     saved.location = await location.save();
 
+    const log = new Logs({
+      command,
+      prevLocation: prevLocation._id,
+      currLocation: saved.location._id,
+    });
+
+    saved.log = await log.save();
+
     res.status(201).json({
       message: `robot turned ${command} successfully!`,
-      prevLocation,
       currentLocation: newLocation,
     });
   } catch (err) {

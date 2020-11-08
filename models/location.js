@@ -19,12 +19,21 @@ const locationSchema = new Schema({
   time: { type: Date, default: Date.now },
 });
 
-locationSchema.statics.currentLocation = function () {
+// eslint-disable-next-line func-names
+locationSchema.statics.currentLocation = function (params) {
+  if (!params) {
+    return this.findOne()
+      .sort({
+        $natural: -1,
+      })
+      .select('x y angle');
+  }
+
   return this.findOne()
     .sort({
       $natural: -1,
     })
-    .select('x y angle -_id');
+    .select(`x y angle ${params}`);
 };
 
 module.exports = mongoose.model('Location', locationSchema);
