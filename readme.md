@@ -4,7 +4,7 @@
 
 A REST API build using [node.js](https://nodejs.org/en/) to control a robot remotely. The endpoints that the API can understand which are listed below : <br>
 
-## Allowed endpoints
+## Allowed endpoints example and description
 
 **http://localhost:3000/robot/location** - To send a GET request to collect the current location of robot .<br>
 
@@ -13,6 +13,7 @@ A REST API build using [node.js](https://nodejs.org/en/) to control a robot remo
 **http://localhost:3000/robot/turn/:commad** - To send a POST request to API to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot,if the request was successful. 'left' and 'right' will command the robot to turn 90 degree to left or right and 'back' will order to robot to turn 180 degree <br>
 
 **http://localhost:3000/robot/logs** - To send a GET request to fetch logs of all commands made to API. The result will contain the log data, and location data of robot before and after the command was send to API. Returns an empty array of logs, if no log is found.<br>
+
 
 ## Requirements
 
@@ -31,10 +32,14 @@ MONGO_DEFAULT_DATABASE=<name-of-mongodb-database>
 MONGO_TEST_DATABASE=<name-of-mongodb-database-for-testing->
 PORT=<port-for-express-api-to-listen>
 ```
+ The .env file is already added to .gitignore and is not allowed in the git repository for project security.<br>
 
-### Development using Node
+[Travis CI](https://docs.travis-ci.com/) : Travis CI is used to run the build and run test. The configuration in .travis.yml file in the root of project directory triggers, build and run tests of the project using docker service. Travis pulls the commits from github. The environment variables , to be used in travis has to defined in the [repository settings](https://docs.travis-ci.com/user/environment-variables/).
 
-Find the Node.js installation guide for your environment here : [official Node.js website](https://nodejs.org/) 
+
+### Development using Node.js
+
+Find the Node.js installation guide for your environment here : [official Node.js website](https://nodejs.org/). The project uses [npm](https://www.npmjs.com/) to manage the node packages used in the project. Node may also require [git](https://git-scm.com/downloads) for version control.
 
 ## Usage
 
@@ -53,6 +58,12 @@ $ npm run dev
 
 The API will be available on the localhost at the port number decalred in the .env file.
 
+## Run Test Locally
+
+```
+$ npm run test
+```
+
 ### Development Using Docker
 
 Find the Docker installation guide for your environment here : [Docker Installation](https://docs.docker.com/get-docker/).
@@ -70,7 +81,7 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-The API will be available on http://<docker-machine-ip>:<port-number-in-env-file>/ .By default the ip address is 192.168.99.100 .But he below commmand can be used to find the IP address.
+The API will be available on http://docker-machine-ip:port-number-in-env-file/ .By default the ip address is 192.168.99.100 .But the below commmand can be used to find the IP address. The command will spin up two docker containers, one for development and other which run tests locally within container.
 
 ```
 $ docker-machine ip
