@@ -2,7 +2,7 @@
 
 # Description
 
-A REST API build using [node.js](https://nodejs.org/en/) to control a robot remotely. The endpoints that the API can understand which are listed below : <br>
+A REST API build using [node.js](https://nodejs.org/en/) to control a robot remotely. The endpoints that the API can understand are listed below : <br>
 
 ## Allowed endpoint and description
 
@@ -14,18 +14,18 @@ A REST API build using [node.js](https://nodejs.org/en/) to control a robot remo
 
 **https://ashok-app.herokuapp.com/robot/logs** - To send a GET request to fetch logs of all commands made to API. The result will contain the log data, and location data of robot before and after the command was send to API. Returns an empty array of logs, if no log is found.<br>
 
-The API is deployed on heroku at the endpoint : **https://ashok-app.herokuapp.com/** and is tested using the postman. The ```Robotapi.postman_collection.json ```file contains details description of various endpoints and data used during development .
+The API is deployed on heroku at the endpoint : **https://ashok-app.herokuapp.com/** and is tested using the postman. The `Robotapi.postman_collection.json `file contains details description of various endpoints and data used during development .
 
 ## Requirements
 
 Download the repository:
 
 ```
-$ git clone https://github.com/ashok-kavungal/Angular-recipe-app.git
+$ git clonehttps://github.com/ashok-kavungal/robot-api.git
 ```
 
 For development, you will need either [node.js](https://nodejs.org/en/) or [Docker](https://docs.docker.com/get-docker/) installed in your environement. An Important step is to create an [.env](https://www.npmjs.com/package/dotenv) file and save the environment variables used in the project. The .env file should be placed in the root folder of project. There should not be double quotes or space between the key-value pairs as shown below: <br><br>
-.env
+`.env`
 
 ```
 MONGO_CLUSTER=<name-of-mongodb-cluster-here>
@@ -36,9 +36,9 @@ MONGO_TEST_DATABASE=<name-of-mongodb-database-for-testing->
 PORT=<port-for-express-api-to-listen>
 ```
 
-The .env file is already added to .gitignore and is not allowed in the git repository for project security.<br>
+The .env file is already added to `.gitignore` and is not allowed in the git repository for project security.<br>
 
-[Travis CI](https://docs.travis-ci.com/) : Travis CI is used to run the build and run test. The configuration in .travis.yml file in the root of project directory triggers, build and run tests of the project using docker service. Travis pulls the commits from github. The environment variables , to be used in travis has to defined in the [repository settings](https://docs.travis-ci.com/user/environment-variables/).
+[Travis CI](https://docs.travis-ci.com/) : Travis CI is used to run the build and run test. The configuration in `.travis.yml `file in the root of project directory triggers, build and run tests of the project using docker service. Travis pulls the commits from github. The environment variables , to be used in travis has to defined in the [repository settings](https://docs.travis-ci.com/user/environment-variables/).
 
 ### Development using Node.js
 
@@ -84,7 +84,7 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-The API will be available on http://docker-machine-ip:port-number-in-env-file/ .By default the ip address is 192.168.99.100 .But the below commmand can be used to find the IP address. The command will spin up two docker containers, one for development and other which run tests locally within container.
+The API will be available on http://docker-machine-ip:port-number-in-env-file/ .By default the ip address is `192.168.99.100 `.But the below commmand can be used to find the IP address. The command will spin up two docker containers, one for development and other which run tests locally within container.
 
 ```
 $ docker-machine ip
