@@ -228,6 +228,116 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Heroku",
+			"item": [
+				{
+					"name": "https://ashok-app.herokuapp.com/robot/location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://ashok-app.herokuapp.com/robot/location",
+							"protocol": "https",
+							"host": [
+								"ashok-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"robot",
+								"location"
+							]
+						},
+						"description": "Sends a GET request to collect the current location of robot ."
+					},
+					"response": []
+				},
+				{
+					"name": "https://ashok-app.herokuapp.com/robot/move",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"command\": \"backward\",\r\n    \"stepsize\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ashok-app.herokuapp.com/robot/move",
+							"protocol": "https",
+							"host": [
+								"ashok-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"robot",
+								"move"
+							]
+						},
+						"description": "Sends an post request with request body containing the command and stepsize to move the robot to a new location. The accepted commands are 'left', 'right', 'backward', and 'forward' , stepsize has to be a numeric value. The requests returns the updated location of robot on success, or error in case of any technical error."
+					},
+					"response": []
+				},
+				{
+					"name": "https://ashok-app.herokuapp.com/robot/turn/:command",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://ashok-app.herokuapp.com/robot/turn/:command",
+							"protocol": "https",
+							"host": [
+								"ashok-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"robot",
+								"turn",
+								":command"
+							],
+							"variable": [
+								{
+									"key": "command",
+									"value": "back"
+								}
+							]
+						},
+						"description": "Sends a POST request to api to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot , if the request was successful.\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "https://ashok-app.herokuapp.com/robot/logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://ashok-app.herokuapp.com/robot/logs",
+							"protocol": "https",
+							"host": [
+								"ashok-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"robot",
+								"logs"
+							]
+						},
+						"description": "Sends a Get request to fetch logs of all commands made to api. The result will contain the log data, and location data of robot before and after the command was send to api. Returns an empty array of logs, if no log is found."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
