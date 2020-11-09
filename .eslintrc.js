@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     node: true,
-    node: true,
+    es6: true,
     'jest/globals': true,
   },
   plugins: ['jest'],
@@ -10,7 +10,12 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
-    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: 'next',
+      },
+    ],
     'linebreak-style': 0,
     'no-console': 1,
     'func-names': 'always',
