@@ -14,7 +14,7 @@ A REST API build using [node.js](https://nodejs.org/en/) to control a robot remo
 
 **https://ashok-app.herokuapp.com/robot/logs** - To send a GET request to fetch logs of all commands made to API. The result will contain the log data, and location data of robot before and after the command was send to API. Returns an empty array of logs, if no log is found.<br>
 
-The API is deployed on heroku on the endpoint:**https://ashok-app.herokuapp.com/** and is tested using the postman. The Robotapi.postman_collection.json file contains details description of various endpoints and data used during development .
+The API is deployed on heroku at the endpoint : **https://ashok-app.herokuapp.com/** and is tested using the postman. The ```Robotapi.postman_collection.json ```file contains details description of various endpoints and data used during development .
 
 ## Requirements
 
