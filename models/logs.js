@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const logSchema = new Schema({
   command: {
     type: String,
-    enum: ['left', 'right', 'forward', 'backward', 'admin'],
+    enum: ['left', 'right', 'forward', 'backward', 'back'],
     required: true,
   },
   stepsize: {
