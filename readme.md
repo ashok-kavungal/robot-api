@@ -1,4 +1,4 @@
-# Robot API (Finlex GmbH - Challenge 2 solution)
+# Robot API
 
 # Description
 
@@ -6,15 +6,14 @@ A REST API build using [node.js](https://nodejs.org/en/) to control a robot remo
 
 ## Allowed endpoint and description
 
-**https://ashok-app.herokuapp.com/robot/location** - To send a GET request to collect the current location of robot .<br>
+**http://localhost:3000/robot/location** - To send a GET request to collect the current location of robot .<br>
 
-**https://ashok-app.herokuapp.com/robot/move** - To send a POST request with request body containing the command and stepsize to move the robot to a new location. The accepted commands are 'left', 'right', 'backward', and 'forward' , stepsize has to be a numeric value. The position consists of x and y and it is following the robot step size for the snap. As an example the position 2,4 means robot stand 2 step to right and 4 step forward from the base point of 0,0. The requests returns the updated location of robot on success, or error in case of any technical error.<br>
+**http://localhost:3000/robot/move** - To send a POST request with request body containing the command and stepsize to move the robot to a new location. The accepted commands are 'left', 'right', 'backward', and 'forward' , stepsize has to be a numeric value. The position consists of x and y and it is following the robot step size for the snap. As an example the position 2,4 means robot stand 2 step to right and 4 step forward from the base point of 0,0. The requests returns the updated location of robot on success, or error in case of any technical error.<br>
 
-**https://ashok-app.herokuapp.com/robot/turn/:commad** - To send a POST request to API to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot,if the request was successful. 'left' and 'right' will command the robot to turn 90 degree to left or right and 'back' will order to robot to turn 180 degree <br>
+**http://localhost:3000/robot/turn/:commad** - To send a POST request to API to change the angle of robot. The accepted commands are 'left', 'right' and 'backward'. The command has to be passed along with endpoint params. Ther url returns the current postion data of the robot,if the request was successful. 'left' and 'right' will command the robot to turn 90 degree to left or right and 'back' will order to robot to turn 180 degree <br>
 
-**https://ashok-app.herokuapp.com/robot/logs** - To send a GET request to fetch logs of all commands made to API. The result will contain the log data, and location data of robot before and after the command was send to API. Returns an empty array of logs, if no log is found.<br>
+**http://localhost:3000/robot/logs** - To send a GET request to fetch logs of all commands made to API. The result will contain the log data, and location data of robot before and after the command was send to API. Returns an empty array of logs, if no log is found.<br>
 
-The API is deployed on heroku at the endpoint : **https://ashok-app.herokuapp.com/** and is tested using the postman. The `Robotapi.postman_collection.json `file contains details description of various endpoints and data used during development .
 
 ## Requirements
 
