@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 const Logs = require('../models/logs');
 const Location = require('../models/location');
 const Robot = require('../utils/robot');
+const apiVersion = require('../package.json').version;
 
 // fetches and returns the last location from db
 exports.getCurrentlocation = async (req, res, next) => {
@@ -12,6 +13,7 @@ exports.getCurrentlocation = async (req, res, next) => {
     res.status(200).json({
       message: 'current location fetched successfully.',
       result: prevLocation,
+      apiverison: apiVersion,
     });
   } catch (err) {
     if (!err.statusCode) {
@@ -27,6 +29,7 @@ exports.getAllLogs = async (req, res, next) => {
     res.status(200).json({
       message: 'fetched all logs successfully.',
       result: log,
+      apiverison: apiVersion,
     });
   } catch (err) {
     if (!err.statusCode) {
@@ -69,6 +72,7 @@ exports.postNextlocation = async (req, res, next) => {
     res.status(201).json({
       message: `robot moved ${stepsize} units ${command} successfully!`,
       currentLocation: newLocation,
+      apiverison: apiVersion,
     });
   } catch (err) {
     if (!err.statusCode) {
@@ -110,6 +114,7 @@ exports.postRotateangle = async (req, res, next) => {
     res.status(201).json({
       message: `robot turned ${command} successfully!`,
       currentLocation: newLocation,
+      apiverison: apiVersion,
     });
   } catch (err) {
     if (!err.statusCode) {

@@ -18,6 +18,7 @@ describe('Robot Controller', () => {
     };
     const location = new Location(defaultLocation);
     await location.save();
+    console.log('test database created successfully');
   });
 
   it('postNextLocation controller should save log and location to db', async () => {
@@ -70,6 +71,7 @@ describe('Robot Controller', () => {
   afterAll(async () => {
     await Logs.deleteMany({});
     await Location.deleteMany({});
+    console.log('test database cleaned up successfully');
     await mongoose.disconnect();
   });
 });
